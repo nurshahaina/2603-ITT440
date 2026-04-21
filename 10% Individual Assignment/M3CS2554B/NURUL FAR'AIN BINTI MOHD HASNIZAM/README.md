@@ -3,6 +3,8 @@
 # GROUP : M3CS2554B
 # TITLE : SQUARE NUMBER GENERATOR
 
+<img width="1132" height="489" alt="image" src="https://github.com/user-attachments/assets/c4b8fc4f-04e3-4d6e-86be-d97fb967bfb3" />
+
 # Requirements
 - Python 3.13
 - VS Code
