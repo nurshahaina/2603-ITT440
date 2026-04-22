@@ -96,7 +96,7 @@ When the analyzer completes its scan, it generates a comprehensive Forensic Brea
 | **Total Critical Threats** | **1,110,942**  |
 
 
-![15mil](https://raw.githubusercontent.com/FaezBun/kelasirlog/refs/heads/main/real100k.png)
+![15mil](https://raw.githubusercontent.com/FaezBun/kelasirlog/refs/heads/main/real15milss.png)
 
 ### Performance Benchmark
 
@@ -109,7 +109,7 @@ When the analyzer completes its scan, it generates a comprehensive Forensic Brea
 
 4. Performance Gain: 🚀 3.19x Faster
 
-![15mil](real15mil.png)
+![15mil](https://raw.githubusercontent.com/FaezBun/kelasirlog/refs/heads/main/real15mil.png)
 
 
 ## B.100K Lines Of Log
@@ -125,7 +125,7 @@ When the analyzer completes its scan, it generates a comprehensive Forensic Brea
 | **Total Critical Threats** | **18,272**   |
 
 
-![100K](real100kss.png)
+![100K](https://raw.githubusercontent.com/FaezBun/kelasirlog/refs/heads/main/real100kss.png)
 
 ### Performance Benchmark
 
@@ -138,7 +138,7 @@ When the analyzer completes its scan, it generates a comprehensive Forensic Brea
 
 4. Performance Gain: 🚀 2.58x Faster
 
-![100k](real100k.png)
+![100k](https://raw.githubusercontent.com/FaezBun/kelasirlog/refs/heads/main/real100k.png)
 
 
 
