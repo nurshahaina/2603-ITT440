@@ -1,5 +1,5 @@
 # MUHAMMAD AFI SYAZRIQ BIN ANUAR
-# MASSIVE DATA HASHING
+# A Concurrent and Parallel Architecture for Massive Data Hashing
 
 # ITT440: Individual Assignment Report
 **Course:** ITT440 – Network Programming 
