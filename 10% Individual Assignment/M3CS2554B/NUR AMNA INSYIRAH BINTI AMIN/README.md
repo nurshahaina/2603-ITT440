@@ -178,4 +178,5 @@ RESULTS: Parallelism is 1.60x faster than Sequential
 # CONCLUSION 
 The results clearly indicate that Multiprocessing is the superior approach for CPU-bound tasks in Python. While Threading offers slight improvements, it is still hindered by the GIL. Multiprocessing effectively distributed the 5 million data points across all 12 logical processors, proving that hardware-aware programming is essential for large-scale data science and engineering tasks.
 
-# VIDEO DEMONSTATION 
+# VIDEO DEMONSTRATION 
+https://youtu.be/B2L96EpZjDE
