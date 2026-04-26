@@ -93,8 +93,8 @@ Once the analysis is complete:
 ### 🖥️ Terminal Output
 The system displays the time taken for each mode:
 
-![Terminal Output](images/terminal.png)
-_<p align="center">Figure 1.1 Terminal Output</p>_
+<img width="1456" height="766" alt="terminal" src="https://github.com/user-attachments/assets/6ace80db-8f0b-4e3c-949c-cb030e315d7f" />
+<p align="center"><i>Figure 1.1 Terminal Output</i></p>
 
 - Sequential: ~136.4758s  
 - Concurrent: ~29.1252s  
@@ -108,8 +108,8 @@ Contains 3,000,000 generated movie rating records including:
 - Movie title  
 - Rating  
 
-![Input File](images/input.png)
-_<p align="center">Figure 1.2 input.txt</p>_
+<img width="628" height="482" alt="input" src="https://github.com/user-attachments/assets/e861d44e-0587-42d1-a6af-420bcd490a49" />
+<p align="center"><i>Figure 1.2 input.txt</i></p>
 
 ---
 
@@ -119,8 +119,8 @@ Contains:
 - Genre classification  
 - Average rating scores 
 
-![Output File](images/output.png)
-_<p align="center">Figure 1.3 output.txt</p>_
+<img width="620" height="481" alt="output" src="https://github.com/user-attachments/assets/476426a3-aa30-4fb7-b49f-e07eb4adc548" />
+<p align="center"><i>Figure 1.3 output.txt</i></p>
 
  
 ---
@@ -132,8 +132,8 @@ A bar chart titled:
 
 Saved as `BenchmarkResults.png
 
-![Performance Chart](images/BenchmarkResults.png)
-_<p align="center">Figure 1.4 input.txt</p>_
+<img width="1000" height="600" alt="BenchmarkResults" src="https://github.com/user-attachments/assets/0065db90-7797-439d-a2c1-7745779bf525" />
+<p align="center"><i>Figure 1.4 Benchmark Results.txt</i></p>
 
 ## 💻 Source Code
 
