@@ -1,5 +1,5 @@
 
-# 🎲 PARALLEL DICE SIMULATOR
+# 🎲 Roll the Dice: A Speed Battle Between Sequential, Threading, and Multiprocessing
 **NAME:** INTAN NURUL FASIHAH BINTI MOHD LAZIM
 
 **STUDENT ID:** 2024442972
@@ -104,10 +104,6 @@ Executes:
 - Threading (concurrent)
 - Multiprocessing (parallel)
 - Measures execution time
-- Displays analytics:
-- Frequency
-- Percentage
- Most/least common values
 
 2. Performance in VM
 
@@ -118,131 +114,166 @@ Running in VMware may be:
 - Allocate at least 2–4 CPU cores
 - Allocate 4GB RAM or more
   
-3. If Program is Too Slow
 
-Change:
-```bash
-TOTAL_ROLLS = 1_000_000
-```
-instead of:
-```bash
-1_000_000_000
-```
-
--------------------
 💻 Source Code
 
 ```bash
 import random
 import time
-from threading import Thread
+from threading import Thread, Lock
 from multiprocessing import Process, Manager, cpu_count
+import matplotlib.pyplot as plt
 
-def roll_dice():
-    return random.randint(1, 6) + random.randint(1, 6)
+# ---------------------------------------------------
+# Roll N dice
+# ---------------------------------------------------
+def roll_dice(num_dice):
+    return sum(random.randint(1, 6) for _ in range(num_dice))
 
-def print_analytics(result, total):
-    print("\n--- Analytics ---")
-    print(f"Total Rolls: {total}")
 
-    max_key = max(result, key=result.get)
-    min_key = min(result, key=result.get)
-
-    for key in sorted(result):
-        percentage = (result[key] / total) * 100
-        print(f"{key}: {result[key]} ({percentage:.2f}%)")
-
-    print(f"\nMost common sum: {max_key}")
-    print(f"Least common sum: {min_key}")
-
-def run_sequential(n):
+# ---------------------------------------------------
+# SEQUENTIAL
+# ---------------------------------------------------
+def run_sequential(total_rolls, num_dice):
     print("\n--- Sequential ---")
-    result = {i: 0 for i in range(2, 13)}
 
     start = time.time()
-    for _ in range(n):
-        result[roll_dice()] += 1
-    end = time.time()
 
-    print(f"Time: {end - start:.2f} seconds")
-    print_analytics(result, n)
+    for _ in range(total_rolls):
+        roll_dice(num_dice)
 
-def thread_worker(n, result):
-    local = {i: 0 for i in range(2, 13)}
+    elapsed = time.time() - start
+    print(f"Time: {elapsed:.2f} seconds")
 
-    for _ in range(n):
-        local[roll_dice()] += 1
+    return elapsed
 
-    for k in local:
-        result[k] += local[k]
 
-def run_threading(n, threads=4):
+# ---------------------------------------------------
+# THREADING WORKER
+# ---------------------------------------------------
+def threading_worker(num_rolls, num_dice):
+    for _ in range(num_rolls):
+        roll_dice(num_dice)
+
+
+# ---------------------------------------------------
+# THREADING
+# ---------------------------------------------------
+def run_threading(total_rolls, num_dice, num_threads=4):
     print("\n--- Threading (Concurrent) ---")
-    result = {i: 0 for i in range(2, 13)}
 
-    chunk = n // threads
-    threads_list = []
+    threads = []
+
+    chunk = total_rolls // num_threads
+    remainder = total_rolls % num_threads
 
     start = time.time()
 
-    for _ in range(threads):
-        t = Thread(target=thread_worker, args=(chunk, result))
+    for i in range(num_threads):
+        rolls = chunk + (1 if i < remainder else 0)
+        t = Thread(target=threading_worker, args=(rolls, num_dice))
+        threads.append(t)
         t.start()
-        threads_list.append(t)
 
-    for t in threads_list:
+    for t in threads:
         t.join()
 
-    end = time.time()
+    elapsed = time.time() - start
+    print(f"Time: {elapsed:.2f} seconds")
 
-    print(f"Time: {end - start:.2f} seconds")
-    print_analytics(result, n)
+    return elapsed
 
-def process_worker(n, shared):
-    local = {i: 0 for i in range(2, 13)}
 
-    for _ in range(n):
-        local[roll_dice()] += 1
+# ---------------------------------------------------
+# MULTIPROCESSING WORKER
+# ---------------------------------------------------
+def process_worker(num_rolls, num_dice):
+    for _ in range(num_rolls):
+        roll_dice(num_dice)
 
-    for k in local:
-        shared[k] += local[k]
 
-def run_multiprocessing(n):
+# ---------------------------------------------------
+# MULTIPROCESSING
+# ---------------------------------------------------
+def run_multiprocessing(total_rolls, num_dice):
     print("\n--- Multiprocessing (Parallel) ---")
 
-    manager = Manager()
-    result = manager.dict({i: 0 for i in range(2, 13)})
-
     processes = []
-    cores = cpu_count()
-    chunk = n // cores
+    num_processes = cpu_count()
+
+    chunk = total_rolls // num_processes
+    remainder = total_rolls % num_processes
 
     start = time.time()
 
-    for _ in range(cores):
-        p = Process(target=process_worker, args=(chunk, result))
-        p.start()
+    for i in range(num_processes):
+        rolls = chunk + (1 if i < remainder else 0)
+        p = Process(target=process_worker, args=(rolls, num_dice))
         processes.append(p)
+        p.start()
 
     for p in processes:
         p.join()
 
-    end = time.time()
+    elapsed = time.time() - start
+    print(f"Time: {elapsed:.2f} seconds")
 
-    print(f"Time: {end - start:.2f} seconds")
-    print_analytics(dict(result), n)
+    return elapsed
 
+
+# ---------------------------------------------------
+# GRAPH
+# ---------------------------------------------------
+def plot_graph(seq, thr, proc):
+    methods = ["Sequential", "Threading", "Multiprocessing"]
+    times = [seq, thr, proc]
+    colors = ["blue", "orange", "green"]
+
+    plt.figure()
+    plt.bar(methods, times, color=colors)
+
+    plt.xlabel("Execution Method")
+    plt.ylabel("Time (seconds)")
+    plt.title("Performance Comparison")
+
+    for i, v in enumerate(times):
+        plt.text(i, v, f"{v:.2f}", ha='center', va='bottom')
+
+    plt.savefig("performance.png")
+    print("\nGraph saved as performance.png")
+
+
+# ---------------------------------------------------
+# MAIN
+# ---------------------------------------------------
 def main():
-    TOTAL_ROLLS = 1_000_000
+    try:
+        num_dice = int(input("Enter number of dice: "))
+        total_rolls = int(input("Enter number of rolls: "))
 
-    print(f"Simulating {TOTAL_ROLLS:,} dice rolls...")
-    run_sequential(TOTAL_ROLLS)
-    run_threading(TOTAL_ROLLS)
-    run_multiprocessing(TOTAL_ROLLS)
+        if num_dice < 1 or total_rolls < 1:
+            raise ValueError
 
+    except ValueError:
+        print("Invalid input. Using default values (2 dice, 1,000,000 rolls).")
+        num_dice = 2
+        total_rolls = 1_000_000
+
+    print(f"\nSimulating {total_rolls:,} rolls with {num_dice} dice...")
+    print(f"CPU cores available: {cpu_count()}")
+
+    seq_time = run_sequential(total_rolls, num_dice)
+    thr_time = run_threading(total_rolls, num_dice)
+    proc_time = run_multiprocessing(total_rolls, num_dice)
+
+    plot_graph(seq_time, thr_time, proc_time)
+
+
+# ---------------------------------------------------
+# ENTRY POINT
+# ---------------------------------------------------
 if __name__ == "__main__":
     main()
--------------------
 
 
 ```
@@ -258,13 +289,28 @@ if __name__ == "__main__":
 
 Sample Input
 ```bash  
- TOTAL_ROLLS = 1_000_000
+Enter number of dice: 2
+Enter number of rolls: 1000000
 ```
 
 Sample Output
+```bash  
+Simulating 1,000,000 rolls with 2 dice...
+CPU cores available: 4
 
+--- Sequential ---
+Time: 0.85 seconds
 
+--- Threading (Concurrent) ---
+Time: 1.10 seconds
 
+--- Multiprocessing (Parallel) ---
+Time: 0.60 seconds
+
+```
+Graph saved as performance.png
+
+<img width="637" height="482" alt="Screenshot 2026-04-28 111412" src="https://github.com/user-attachments/assets/6ef9e291-b014-420f-9a62-6419763859ee" />
 
 -----------------------
 # 📌 Conclusion
