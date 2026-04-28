@@ -70,9 +70,17 @@ phyton ITT440.py
 
 ## Sample Ouput
 
+<img width="499" height="682" alt="image" src="https://github.com/user-attachments/assets/89b09258-ef51-47fa-8d6f-2d025ecf5f77" />
+
+
 ## Sample Output Files
 
+<img width="441" height="244" alt="image" src="https://github.com/user-attachments/assets/68c28d8a-e930-4b2a-a6b0-fe83f2173c2e" />
+
+
 ## Sample Graph 
+<img width="1155" height="716" alt="image" src="https://github.com/user-attachments/assets/f30fde48-caf2-4ed6-9a50-b635c4a8c539" />
+
 
 ## Conclusion
 This project successfully demonstrates the differences between sequential, concurrent and parallel programming.
