@@ -70,11 +70,16 @@ Enter number of processes: 4
 **The program will automatically:**
 
 ```bash
-- Generate baggage data
-- Execute sequential processing
-- Execute concurrent processing (threading)
-- Execute parallel processing (multiprocessing)
-- Display execution time and performance comparison
+- Generate large-scale baggage data automatically
+- Execute sequential processing (baseline method)
+- Execute concurrent processing using threading
+- Execute parallel processing using multiprocessing
+- Measure and record execution time for each method
+- Analyze baggage distribution across destinations
+- Identify busiest and least busy destinations
+- Calculate total processing load and average load per bag
+- Display a summarized analytics report
+- Compare performance and identify the fastest method
 ```
 
 
@@ -82,25 +87,29 @@ Enter number of processes: 4
 ## SAMPLE OUTPUT
 
 ```bash
-===== AIRPORT BAGGAGE HANDLING SIMULATOR =====
+========== BAGGAGE ANALYTICS REPORT ==========
 
-Generating baggage data...
-100000 baggage records generated.
+Baggage distribution:
+KUL: 16654 bags (16.65%)
+JHB: 16713 bags (16.71%)
+PEN: 16621 bags (16.62%)
+LGK: 16678 bags (16.68%)
+BKI: 16658 bags (16.65%)
+KCH: 16676 bags (16.68%)
 
-Running sequential processing...
-Sequential completed in 8.5000 seconds
+Total baggage processed: 100000
 
-Running threading processing...
-Threading completed in 6.9000 seconds
+Busiest destination: JHB (16713 bags)
+Least busy destination: PEN (16621 bags)
 
-Running multiprocessing processing...
-Multiprocessing completed in 3.2000 seconds
+Total processing load: 1532849210
+Average load per bag: 15328
 
-========== PERFORMANCE COMPARISON ==========
-Sequential      : 8.5000 seconds
-Threading       : 6.9000 seconds
-Multiprocessing : 3.2000 seconds
-Fastest Method: Multiprocessing
+========== PERFORMANCE ==========
+Sequential      : 8.5000s
+Threading       : 6.9000s
+Multiprocessing : 3.2000s
+Fastest Method  : Multiprocessing
 ```
 
 
