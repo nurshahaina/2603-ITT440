@@ -4,6 +4,7 @@
 **Student ID:** 2024201716  
 **Class:** M3CS2554A  
 **Course:** ITT440  
+**Lecturer:** Shahadan Bin Saad
 
 ---
 
@@ -18,9 +19,9 @@ To overcome this limitation, concurrent and parallel programming techniques are 
 This project focuses on developing a high-performance web health monitoring system capable of checking the status of **5000 URLs** efficiently.
 
 The system compares three execution approaches:
-- 🐢 Sequential Programming  
-- ⚡ Threading (Concurrent Programming)  
-- 🔥 Multiprocessing (Parallel Programming)  
+-  Sequential Programming  
+-  Threading (Concurrent Programming)  
+-  Multiprocessing (Parallel Programming)  
 
 Additional features include:
 - Dynamic resource scaling  
@@ -344,6 +345,8 @@ Multiprocessing, although powerful for CPU-bound tasks, is less suitable here du
 --- 
 
 # 🎥 Demonstration Video
+
+https://youtu.be/Pu8BO5MWfwo?si=-dJRxc304-5XWMr5
 
 --- 
 
