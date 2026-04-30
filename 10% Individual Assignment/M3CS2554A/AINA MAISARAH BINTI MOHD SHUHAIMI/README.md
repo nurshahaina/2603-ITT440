@@ -84,13 +84,13 @@ python3 ITT440_1.py
 | 5   | Tripeaks  | 40%     |
 
 ## 📊 4. Select a Difficulty Level:
-| Level  | Number of Games |
-| ------ | --------------- |
-| Easy   | 100,000         |
-| Medium | 200,000         |
-| Hard   | 300,000         |
-| Expert | 400,000         |
-| Master | 500,000         |
+| No. | Level  | Number of Games |
+|-----| ------ | --------------- |
+| 1   | Easy   | 100,000         |
+| 2   | Medium | 200,000         |
+| 3   | Hard   | 300,000         |
+| 4   | Expert | 400,000         |
+| 5   | Master | 500,000         |
 
 
 ## 🧪 5. Analyze Results 
