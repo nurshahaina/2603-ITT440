@@ -93,7 +93,8 @@ python main.py
 ## 10. Source Code
 
 ### main.py :
-<img width="723" height="1060" alt="image" src="https://github.com/user-attachments/assets/7b5b83f2-0c65-486a-b2bc-c14bf625afae" />
+<img width="857" height="1068" alt="image" src="https://github.com/user-attachments/assets/49bad76e-e6e3-440b-b1a2-33de0fa95eea" />
+<img width="557" height="634" alt="image" src="https://github.com/user-attachments/assets/e106ec1b-31f2-441a-b02e-fd1e26d115ae" />
 
 ### multiprocessing_ver.py :
 <img width="424" height="371" alt="image" src="https://github.com/user-attachments/assets/2ee3ab27-cb4c-4c4e-b376-43ebdeee209f" />
@@ -124,4 +125,4 @@ Overall, understanding these three techniques helps in designing more efficient 
 ---
 
 ## 12. Links  
-YouTube Demo: (paste your video link)
+YouTube Demo: https://youtu.be/QavcjYqufm8
